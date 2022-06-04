@@ -11,13 +11,15 @@ class D {};
 int main() {
   CompressedTuple<int, A, B, double, C, D> ct = {123,     A{}, B{},
                                                  123.456, C{}, D{}};
+  std::tuple<int, A, B, double, C, D> t;
   cget<0>(ct) = 234;
   auto x0 = cget<0>(ct);
   auto x1 = cget<1>(ct);
   auto x2 = cget<2>(ct);
   auto x3 = cget<3>(ct);
   auto x4 = cget<4>(ct);
-  printf("%llu\n", sizeof(ct));
+  printf("sizeof CompressedTuple:%llu\n", sizeof(ct));
+  printf("sizeof std::tuple     :%llu\n", sizeof(t));
   printf("%d\n", x0);
   printf("%f\n", x3);
   (void)x0;
